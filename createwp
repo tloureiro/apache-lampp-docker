@@ -1,0 +1,2 @@
+wp core config --dbname=wordpress --dbuser=root;
+wp db create

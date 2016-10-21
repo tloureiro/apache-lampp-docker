@@ -46,6 +46,9 @@ RUN php5enmod mcrypt
 
 RUN alias wp='wp --allow-root'
 
+COPY createwp /usr/bin/createwp
+RUN chmod +x /usr/bin/createwp
+
 RUN mkdir /dump
 RUN chmod 777 -R /dump
 RUN chmod 777 -R /var/www/html

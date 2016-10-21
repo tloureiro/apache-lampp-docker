@@ -1,0 +1,24 @@
+lampp:
+  image: my_lampp
+  ports:
+    - 9000:80
+    - 9001:3306
+  volumes:
+    - ./wordpress:/var/www/html
+    - ./mysql:/var/lib/mysql
+    - ./dump:/dump
+  environment:
+    MYSQL_PASS: password
+
+  command: |
+    bash -c 'bash -s <<EOF
+      if [ -s /var/www/html/wp-config.php ]; then
+        echo;
+      else
+        cd /var/www/html;
+        wp core download --allow-root;
+        chmod 777 -R /var/www/html;
+        cd /;
+      fi;
+      /run.sh;
+    EOF'
