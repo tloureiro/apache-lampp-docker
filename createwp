@@ -1,2 +1,2 @@
-wp core config --dbname=wordpress --dbuser=root;
+wp core config --dbname=wordpress --dbuser=admin --dbpass=password;
 wp db create
